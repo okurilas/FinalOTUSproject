@@ -7,9 +7,6 @@ import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class OTUSstartPage extends BasePage {
@@ -25,10 +22,8 @@ public class OTUSstartPage extends BasePage {
     @FindBy (css = "div.lessons__new-item-container")
     private WebElement coursesOnPage;
 
-
     @FindBys(@FindBy (css = "div.lessons__new-item-container"))
     private List<WebElement> coursesOnThePage;
-
 
     @FindBy (xpath = "//p[contains(text(),'События')]")
     private WebElement eventsBtn;
@@ -42,14 +37,11 @@ public class OTUSstartPage extends BasePage {
 
     public WebElement open () {
         driver.get(cfg.urlOTUS());
-
-        logger.info("Открыли сайт Отус и ждём минуту");
-        logger.info("минута прошла");
         WebElement headerOTUS = wait.until(ExpectedConditions.elementToBeClickable(otusHeader));
         return headerOTUS;
     }
 
-    public Integer openTestingCourse(){
+    public Integer openTestingCourses(){
         wait.until(ExpectedConditions.elementToBeClickable(courcesBtn))
                 .click();
         wait.until(ExpectedConditions.elementToBeClickable(testingCourse))
@@ -59,14 +51,13 @@ public class OTUSstartPage extends BasePage {
     }
 
     public void openOneTestingCourse(){
-        openTestingCourse();
+        openTestingCourses();
         wait.until(ExpectedConditions.elementToBeClickable(coursesOnPage))
                 .click();
-
     }
 
     public void openEachTestingCourse(){
-        openTestingCourse();
+        openTestingCourses();
         List<WebElement> NumberOfCourcesOnPage=numberOfCourcesOnPage;
         System.out.println(NumberOfCourcesOnPage.size());
         for (int i = 0; i < NumberOfCourcesOnPage.size() - 1; i++) {

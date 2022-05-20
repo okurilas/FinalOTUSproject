@@ -1,9 +1,6 @@
 package pages;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
@@ -41,7 +38,7 @@ public class EventsPage extends BasePage{
     @FindBy (css="div.footer2__links.footer2__links_center")
     private WebElement footer;
 
-    @FindBy(xpath ="//div[contains(text(),'Spark в Kubernetes')]")
+    @FindBy(xpath ="//div[contains(text(),'Открытый урок «UI Profiling. Обзор возможностей тестирования производительности приложений и инструментов оптимизации')]")
     private WebElement lastEvent;
 
     public EventsPage(WebDriver driver, WebDriverWait wait) {
@@ -58,45 +55,6 @@ public class EventsPage extends BasePage{
         List <WebElement> EventsCalendarEl = wait.until(ExpectedConditions.visibilityOfAllElements(eventsCalendarElements));
         return EventsCalendarEl;
     }
-
-//    public Date checkDatesOfEvents() throws ParseException, AWTException {
-////        actions = new Actions(driver);
-////        actions
-////                .sendKeys(Keys.SPACE)
-////                .sendKeys(Keys.SPACE)
-////                .perform();
-//
-////        JavascriptExecutor jse = (JavascriptExecutor)driver;
-////        jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-//
-//        Robot robot = new Robot();
-//        robot.keyPress(KeyEvent.VK_PAGE_DOWN);
-//        robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
-//
-//        List <WebElement> DatesOfEvents = wait.until(ExpectedConditions.visibilityOfAllElements(dateOfCources));
-//        for(int i = 0; i < DatesOfEvents.size()-1; i++) {
-//            //System.out.println(DatesOfEvents.get(i).getText());
-//            String EventDateStr = DatesOfEvents.get(i).getText();
-//            SimpleDateFormat formatter1 = new SimpleDateFormat("dd MMM");
-//            Date date2 = formatter1.parse(EventDateStr);
-//
-//            ArrayList <Date> ArrayDates = new ArrayList<Date>();
-//            ArrayDates.add(date2);
-//            System.out.println(ArrayDates);
-//
-//        }
-//
-//        String EventDateStr = DatesOfEvents.get(0).getText();
-//        SimpleDateFormat formatter1 = new SimpleDateFormat("dd MMM");
-//        Date date2 = formatter1.parse(EventDateStr);
-//
-//        return date2;
-//    }
-
-
-
-
-
 
 
     public ArrayList <Date> checkDatesOfEvents() throws ParseException, AWTException, InterruptedException {
@@ -136,12 +94,50 @@ public class EventsPage extends BasePage{
 //                .sendKeys(Keys.SPACE)
 //                .perform();
 
-do {
-    JavascriptExecutor jse = (JavascriptExecutor)driver;
-    jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-    //Thread.sleep(1000);
-}
-while (!(wait.until(ExpectedConditions.visibilityOf(footer)).isDisplayed()));
+
+
+
+
+
+//do {
+//    JavascriptExecutor jse = (JavascriptExecutor)driver;
+//    jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+//}
+//while (!(wait.until(ExpectedConditions.visibilityOf(footer)).isDisplayed()));
+
+
+
+
+//        boolean presentElement;
+//        do {
+//            JavascriptExecutor jse = (JavascriptExecutor)driver;
+//            jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+//            logger.info("Промотали страницу");
+//
+//            //boolean presentElement;
+//            try {
+//                wait.until(ExpectedConditions.visibilityOf(lastEvent)).isDisplayed();
+//                presentElement = true;
+//                logger.info("Элемент найден");
+//            } catch (TimeoutException e) {
+//                presentElement = false;
+//                logger.info("Элемент НЕ найден");
+//            }
+//        }
+//        while (presentElement = false);
+//        logger.info("вышли из цикла");
+
+
+
+
+
+        while (!(driver.findElements( By.xpath("//div[contains(text(),'Открытый урок «UI Profiling. Обзор возможностей тестирования производительности приложений и инструментов оптимизации')]") ).size()!=0))
+        {
+            JavascriptExecutor jse = (JavascriptExecutor)driver;
+            jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+            logger.info("Промотали страницу");
+        }
+
 
 
 
@@ -178,38 +174,9 @@ while (!(wait.until(ExpectedConditions.visibilityOf(footer)).isDisplayed()));
                 .click();
 
     }
-//    public WebElement sortEventsCheck(){
-//        //System.out.println(dodEventResult.getText());
-//        return wait.until(ExpectedConditions.elementToBeClickable(dodEventResult));
-//    }
-public List<WebElement> sortEventsCheck(){
-    //System.out.println(dodEventResult.getText());
-    return wait.until(ExpectedConditions.visibilityOfAllElements(dodEventResults));
-}
 
-//    public void testDates() throws ParseException {
-//
-//        SimpleDateFormat formatter1 = new SimpleDateFormat("MMM dd", Locale.ENGLISH);
-//        SimpleDateFormat formatter2 = new SimpleDateFormat("dd MMM");
-//
-//        String dateInString2 = "07 Июня";
-//        String dateInString3 = "07 Июня";
-//        Date date = new Date();
-//        String today = String.valueOf(date);
-//        String today2 = today.substring(4, 10);
-//        Date date2 = formatter2.parse(dateInString2);
-//        Date date3 = formatter2.parse(dateInString3);
-//        Date dateToday = formatter1.parse(today2);
-//        System.out.println(date2);
-//        System.out.println(date3);
-//        System.out.println(dateToday);
-//
-//        System.out.println("Сегодня " + dateToday + " - это раньше, чем " + date2 + dateToday.before(date2));
-//        System.out.println("Сегодня " + dateToday + " - это раньше, чем " + date3 + dateToday.before(date3));
-//        System.out.println("7ое мая " + date2 + " - это раньше, чем " + date3 + date2.before(date3));
-//        System.out.println("7ое июня " + date3 + " - это раньше, чем " + date2 + date3.before(date2));
-//        System.out.println(date3 + " тоже самое что и " + date2 + date3.equals(date2));
-//        System.out.println(dateToday + " тоже самое что и " + date2 + dateToday.equals(date2));
-//    }
+    public List<WebElement> sortEventsCheck(){
+    return wait.until(ExpectedConditions.visibilityOfAllElements(dodEventResults));
+    }
 
 }
