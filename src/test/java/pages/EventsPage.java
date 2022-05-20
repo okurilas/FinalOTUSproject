@@ -135,7 +135,7 @@ public class EventsPage extends BasePage{
         {
             JavascriptExecutor jse = (JavascriptExecutor)driver;
             jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-            logger.info("Промотали страницу");
+            //logger.info("Промотали страницу");
         }
 
 
@@ -161,8 +161,8 @@ public class EventsPage extends BasePage{
 
             ArrayDates = new ArrayList<Date>();
             ArrayDates.add(date2);
-            System.out.println(ArrayDates);
-            continue;
+            //System.out.println(ArrayDates);
+
         }
         return ArrayDates;
     }

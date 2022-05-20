@@ -35,6 +35,8 @@ public class FinalOTUStests {
     public void setUp(){
         WebDriverManager.chromedriver().setup();
         logger.info("драйвер поднят");
+        options.addArguments("start-fullscreen");
+        init(options);
     }
 
     @After
@@ -51,8 +53,8 @@ public class FinalOTUStests {
 
         logger.info("Открыть website OTUS в режиме полного экрана");
 
-        options.addArguments("start-fullscreen");
-        init(options);
+//        options.addArguments("start-fullscreen");
+//        init(options);
         OTUSstartPage otusStartPage = new OTUSstartPage(driver, wait);
         WebElement headerOTUS = otusStartPage.open();
         Assert.assertTrue(headerOTUS.isEnabled());
@@ -71,8 +73,8 @@ public class FinalOTUStests {
 
         logger.info("Открыть website OTUS");
 
-        options.addArguments("start-fullscreen");
-        init(options);
+//        options.addArguments("start-fullscreen");
+//        init(options);
         OTUSstartPage otusStartPage = new OTUSstartPage(driver, wait);
         WebElement headerOTUS = otusStartPage.open();
         Assert.assertTrue(headerOTUS.isEnabled());
@@ -104,8 +106,8 @@ public class FinalOTUStests {
 
         logger.info("Открыть website OTUS");
 
-        options.addArguments("start-fullscreen");
-        init(options);
+//        options.addArguments("start-fullscreen");
+//        init(options);
         OTUSstartPage otusStartPage = new OTUSstartPage(driver, wait);
         WebElement headerOTUS = otusStartPage.open();
         Assert.assertTrue(headerOTUS.isEnabled());
@@ -140,8 +142,8 @@ public class FinalOTUStests {
 
         logger.info("Открыть website OTUS");
 
-        options.addArguments("start-fullscreen");
-        init(options);
+//        options.addArguments("start-fullscreen");
+//        init(options);
         OTUSstartPage otusStartPage = new OTUSstartPage(driver, wait);
         WebElement headerOTUS = otusStartPage.open();
         Assert.assertTrue(headerOTUS.isEnabled());
